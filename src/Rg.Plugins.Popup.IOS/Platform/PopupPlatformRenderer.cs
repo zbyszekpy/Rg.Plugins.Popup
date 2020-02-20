@@ -23,6 +23,21 @@ namespace Rg.Plugins.Popup.IOS.Platform
             // Fix #307
         }
 
+        public override UIStatusBarStyle PreferredStatusBarStyle()
+        {
+          switch (UINavigationBar.Appearance.BarStyle)
+          {
+            case UIBarStyle.Default:
+              return UIStatusBarStyle.Default;
+            case UIBarStyle.Black:
+              return UIStatusBarStyle.LightContent;
+            case UIBarStyle.BlackTranslucent:
+              return UIStatusBarStyle.BlackOpaque;
+            default:
+              throw new ArgumentOutOfRangeException();
+          }
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)
